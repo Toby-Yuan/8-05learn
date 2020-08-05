@@ -1,0 +1,54 @@
+// CREATE : 建立資料庫
+CREATE database (name) default character set utf8
+--> utf8 : 地球文(通通都可以)
+
+--> 切換資料庫
+USE (name)
+
+// 建立資料表
+CREATE table t1 (
+    id int,
+    data int
+);
+
+// 建立臨時資料表
+CREATE TEMPORARY table (name)
+
+// 課堂練習
+// 建立資料庫
+CREATE database workout;
+USE workout
+
+// 建立資料表
+--> 儲存類別 : varcher(n) 字串   int(n) 數字
+CREATE table friends(
+    fid int auto_increment not null primary key,
+    cname char(10) null,
+    ename varchar(30) null,
+    tel varchar(30) null
+);
+--> auto_increment : 自動編號
+--> not null : 不為零
+--> primary key : 主鍵
+
+// 修改資料表 - 新增欄位
+ALTER table friends
+    ADD email varchar(30) default 'some@somewhere.com'
+--> default : 預設值
+
+// 修改資料表 - 修改欄位
+ALTER table friends
+    MODIFY email varchar(40);
+DESCRIBE friends;
+
+--> 原本的設定也會跟著不見
+ALTER table friends
+    MODIFY email varchar(40) default 'some@somewhere.com';
+DESCRIBE friends;
+
+//  修改資料表 - 刪除欄位
+ALTER table friends
+    DROP colume email;
+
+// 刪除資料表
+DROP table friends;
