@@ -52,3 +52,43 @@ ALTER table friends
 
 // 刪除資料表
 DROP table friends;
+
+// 傳統模式
+set sql_mode = 'tradditional';
+
+// primary key
+// 可以防止資料重複輸入，或是誤刪
+
+--> 狀況 :
+CREATE table t1(
+    id int null,
+    data int null
+);
+
+INSERT into (id, data) VALUES (1,100), (2,100);
+INSERT itno (id, data) VALUES (1,100);
+
+SELECT * FROM t1;
+UPDATE t1 SET id = 3 WHERE id = 1 AND data = 100;
+
+--> 解決 :
+CREATE table t1(
+    id int null,
+    data int null
+);
+
+INSERT into (id, data) VALUES (1,100), (2,100);
+INSERT itno (id, data) VALUES (1,100);
+
+ALTER table t1 
+ADD tempID int auto_increment primary key;
+
+SELECT * FROM t1;
+UPDATE t1 SET id = 3 WHERE tempID = 3;
+
+--> 建立方法1 :
+id int auto_increment not null primary key
+
+--> 建立方法2 :
+id int not null,
+primary key (id)
