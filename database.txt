@@ -92,3 +92,9 @@ id int auto_increment not null primary key
 --> 建立方法2 :
 id int not null,
 primary key (id)
+
+// 編寫索引 -- 獨特的值比較好(PK)，被索引的可以直接被使用
+CREATE INDEX idex_name ON table_name ( list_name )
+
+// 索引可以有排序
+CREATE INDEX idex_name ON table_name ( list_name1, list_name2 )
